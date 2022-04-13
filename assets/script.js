@@ -1,10 +1,13 @@
+//on click, takes the <p> that is in the middle column of a given row and turns it into a textbox
 $('.description').on('click', "p", function () {
   var text = $(this)
     .text()
     .trim();
+  //collect user input
   var textInput = $('<textarea>')
     .addClass('form-control')
     .val(text);
+  //replace text with user input
   $(this).replaceWith(textInput.trigger('focus'));
 })
 
@@ -22,6 +25,7 @@ $(".description").on("blur", "textarea", function () {
   $(this).replaceWith(taskP);
 });
 
+//save buttons append the user input to the local storage with different tags for each
 $('#save1').click(function () {
   var text = $('#container1')
     .text();
@@ -77,6 +81,7 @@ $('#save9').click(function () {
   console.log('click')
 })
 
+//on page load, local storage is all pulled and added to the proper sections
 $(document).ready(function fillScores() {
   var score1 = localStorage.getItem("task1")
   var score2 = localStorage.getItem("task2")
@@ -88,8 +93,7 @@ $(document).ready(function fillScores() {
   var score8 = localStorage.getItem("task8")
   var score9 = localStorage.getItem("task9")
 
-  //take the string from local storage and replace the current p with that
-  //could be deleting current p but make sure to reference lines 1-25
+  //p for each container is replaced by current local storage value
   $("#container1").append(`<p class='w-75 h-75 textboxP'>${score1}</p>`)
   $("#container2").append(`<p class='w-75 h-75 textboxP'>${score2}</p>`)
   $("#container3").append(`<p class='w-75 h-75 textboxP'>${score3}</p>`)
@@ -99,22 +103,23 @@ $(document).ready(function fillScores() {
   $("#container7").append(`<p class='w-75 h-75 textboxP'>${score7}</p>`)
   $("#container8").append(`<p class='w-75 h-75 textboxP'>${score8}</p>`)
   $("#container9").append(`<p class='w-75 h-75 textboxP'>${score9}</p>`)
+
+  //header also displays current time
+  $('#currentDay').append(`Today is ${moment().format('LLLL')}`)
 });
 
-// function timeCheck (){
-//   if (moment().format('H') < 
-// }
-
-
+//moment.js is used to check the hour
 var hour = moment().format('H')
-// apply new class if task is near/over due date
+
+//hour is compared to the number attributed to each row
 function nine() {
+  //depending on whether it is less than, greater than or equal to, a class is assigned
   if (hour > 9) {
     $("#container1").addClass("past");
   } else if (hour < 9) {
-    $("container1").addClass("future");
+    $("#container1").addClass("future");
   } else {
-    $("container1").addClass("present");
+    $("#container1").addClass("present");
   }
 }
 
@@ -122,9 +127,9 @@ function ten() {
   if (hour > 10) {
     $("#container2").addClass("past");
   } else if (hour < 10) {
-    $("container2").addClass("future");
+    $("#container2").addClass("future");
   } else {
-    $("container2").addClass("present");
+    $("#container2").addClass("present");
   }
 }
 
@@ -132,9 +137,9 @@ function eleven() {
   if (hour > 11) {
     $("#container3").addClass("past");
   } else if (hour < 11) {
-    $("container3").addClass("future");
+    $("#container3").addClass("future");
   } else {
-    $("container3").addClass("present");
+    $("#container3").addClass("present");
   }
 }
 
@@ -142,9 +147,9 @@ function twelve() {
   if (hour > 12) {
     $("#container4").addClass("past");
   } else if (hour < 12) {
-    $("container4").addClass("future");
+    $("#container4").addClass("future");
   } else {
-    $("container4").addClass("present");
+    $("#container4").addClass("present");
   }
 }
 
@@ -152,9 +157,9 @@ function thirteen() {
   if (hour > 13) {
     $("#container5").addClass("past");
   } else if (hour < 13) {
-    $("container5").addClass("future");
+    $("#container5").addClass("future");
   } else {
-    $("container5").addClass("present");
+    $("#container5").addClass("present");
   }
 }
 
@@ -162,9 +167,9 @@ function fourteen() {
   if (hour > 14) {
     $("#container6").addClass("past");
   } else if (hour > 14) {
-    $("container6").addClass("future");
+    $("#container6").addClass("future");
   } else {
-    $("container6").addClass("present");
+    $("#container6").addClass("present");
   }
 }
 
@@ -172,9 +177,9 @@ function fifteen() {
   if (hour > 15) {
     $("#container7").addClass("past");
   } else if (hour < 15) {
-    $("container7").addClass("future");
+    $("#container7").addClass("future");
   } else {
-    $("container7").addClass("present");
+    $("#container7").addClass("present");
   }
 }
 
@@ -182,9 +187,9 @@ function sixteen() {
   if (hour > 16) {
     $("#container8").addClass("past");
   } else if (hour < 16) {
-    $("container8").addClass("future");
+    $("#container8").addClass("future");
   } else {
-    $("container8").addClass("present");
+    $("#container8").addClass("present");
   }
 }
 
@@ -192,9 +197,9 @@ function seventeen() {
   if (hour > 17) {
     $("#container9").addClass("past");
   } else if (hour < 17) {
-    $("container9").addClass("future");
+    $("#container9").addClass("future");
   } else {
-    $("container9").addClass("present");
+    $("#container9").addClass("present");
   }
 }
 
