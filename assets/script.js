@@ -166,7 +166,7 @@ function thirteen() {
 function fourteen() {
   if (hour > 14) {
     $("#container6").addClass("past");
-  } else if (hour > 14) {
+  } else if (hour < 14) {
     $("#container6").addClass("future");
   } else {
     $("#container6").addClass("present");
